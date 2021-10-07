@@ -1,12 +1,15 @@
-package br.com.fiap.fiapBlood.dto.address;
+package br.com.fiap.fiapBlood.dto.bankOfBlood;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AddressCreateOrUpdateDTO {
+public class BankOfBloodCreateOrUpdateDTO {
     private Long id;
+    private String nome;
+    private String horariodeatendimento;
+    private String telefone;
     private String cep;
     private String logradouro;
     private Integer numero;
