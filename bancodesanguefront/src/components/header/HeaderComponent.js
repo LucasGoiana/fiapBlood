@@ -19,12 +19,20 @@ class HomeComponent extends Component{
         return (
             <Navbar toggleable inverse className="bg-primary navbar-expand-sm navbar-dark">
                 <NavbarToggler right onClick={this.toggleNavbar} />
-                <NavbarBrand href="/"> Spring + React </NavbarBrand>
+                <NavbarBrand href="/"> Logo Aqui </NavbarBrand>
                 <Collapse navbar isOpen={isOpen}>
                     <Nav navbar>
                         <NavItem>
-                            <NavLink href="/">Home</NavLink>
+                            <NavLink href="/">
+                                Home
+                            </NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink href="/bankOfBlood/">
+                                Banco de Sangue
+                            </NavLink>
+                        </NavItem>
+
                     </Nav>
                 </Collapse>
             </Navbar>
