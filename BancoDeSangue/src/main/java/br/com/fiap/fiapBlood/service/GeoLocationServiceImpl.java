@@ -29,7 +29,7 @@ public class GeoLocationServiceImpl implements GeoLocationService {
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Request request = new Request.Builder()
-                .url(url + "?" + format + "&city=" + city + "&q=" + street + "," + district + "&limit=" + limit )
+                .url(url + "?" + format + "&q=" + street + ", " + district + ", " + city + "&limit=" + limit )
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
                 .build();
@@ -58,7 +58,7 @@ public class GeoLocationServiceImpl implements GeoLocationService {
 
 
 
-    public double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+    public Double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
         dist = Math.acos(dist);

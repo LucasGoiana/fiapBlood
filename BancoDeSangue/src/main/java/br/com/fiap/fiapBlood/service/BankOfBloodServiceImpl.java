@@ -16,10 +16,13 @@ import java.util.stream.Collectors;
 public class BankOfBloodServiceImpl implements BankOfBloodService {
 
     private final BankOfBloodRepository bankOfBloodRepository;
-    private BankOfBloodDTO bankOfBloodDTO;
+    private final GeoLocationService geoLocationService;
+    private final ViaCepService viaCepService;
 
-    public BankOfBloodServiceImpl(BankOfBloodRepository bankOfBloodRepository) {
+    public BankOfBloodServiceImpl(BankOfBloodRepository bankOfBloodRepository, GeoLocationService geoLocationService, ViaCepService viaCepService) {
         this.bankOfBloodRepository = bankOfBloodRepository;
+        this.geoLocationService = geoLocationService;
+        this.viaCepService = viaCepService;
     }
 
     @Override
@@ -29,11 +32,29 @@ public class BankOfBloodServiceImpl implements BankOfBloodService {
     }
 
     @Override
+    public List<BankOfBloodDTO> searchBlankOfBlood(String cep) {
+        var addressUser = viaCepService.getInfoAddress(cep);
+        var blankBloodCity = bankOfBloodRepository.findBlankOfBloodEntityByUf(addressUser.uf);
+        var geographicPointUser = geoLocationService.getGeographicCoordinates(addressUser.logradouro,addressUser.bairro,addressUser.localidade);
+
+        var lista = blankBloodCity.stream()
+                .filter(blankBlood -> geoLocationService.calculateDistance(Double.parseDouble(geographicPointUser.getLatitude()),Double.parseDouble(geographicPointUser.getLongitude()),blankBlood.getLatitude(),blankBlood.getLongitude()) < 100)
+                .sorted((o1,o2) -> geoLocationService.calculateDistance(Double.parseDouble(geographicPointUser.getLatitude()),Double.parseDouble(geographicPointUser.getLongitude()),o2.getLatitude(),o1.getLongitude()).compareTo(geoLocationService.calculateDistance(Double.parseDouble(geographicPointUser.getLatitude()),Double.parseDouble(geographicPointUser.getLongitude()),o2.getLatitude(),o2.getLongitude())) )
+                .map(BankOfBloodDTO::converter).collect(Collectors.toList());
+        return lista;
+
+    }
+
+    @Override
     public BankOfBloodDTO createBankOfBlood(BankOfBloodCreateOrUpdateDTO bankOfBloodCreateOrUpdateDTO) {
 
             BankOfBloodEntity bankOfBloodEntity = new BankOfBloodEntity(bankOfBloodCreateOrUpdateDTO);
+            var geoPoints = geoLocationService.getGeographicCoordinates(bankOfBloodCreateOrUpdateDTO.getLogradouro(),bankOfBloodCreateOrUpdateDTO.getBairro(),bankOfBloodCreateOrUpdateDTO.getCidade());
+            bankOfBloodEntity.setLatitude(Double.parseDouble(geoPoints.getLatitude()));
+            bankOfBloodEntity.setLongitude(Double.parseDouble(geoPoints.getLongitude()));
+
             bankOfBloodEntity = bankOfBloodRepository.save(bankOfBloodEntity);
-            return bankOfBloodDTO.converter(bankOfBloodEntity);
+            return BankOfBloodDTO.converter(bankOfBloodEntity);
 
     }
 
@@ -42,8 +63,11 @@ public class BankOfBloodServiceImpl implements BankOfBloodService {
         bankOfBloodRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Banco de Sangue não encontrado"));
         BankOfBloodEntity bankOfBloodEntity = new BankOfBloodEntity(bankOfBloodCreateOrUpdateDTO);
         bankOfBloodEntity.setId(id);
+        var geoPoints = geoLocationService.getGeographicCoordinates(bankOfBloodCreateOrUpdateDTO.getLogradouro(),bankOfBloodCreateOrUpdateDTO.getBairro(),bankOfBloodCreateOrUpdateDTO.getCidade());
+        bankOfBloodEntity.setLatitude(Double.parseDouble(geoPoints.getLatitude()));
+        bankOfBloodEntity.setLongitude(Double.parseDouble(geoPoints.getLongitude()));
         bankOfBloodEntity = bankOfBloodRepository.save(bankOfBloodEntity);
-        return bankOfBloodDTO.converter(bankOfBloodEntity);
+        return BankOfBloodDTO.converter(bankOfBloodEntity);
 
     }
 
@@ -57,10 +81,13 @@ public class BankOfBloodServiceImpl implements BankOfBloodService {
         bankOfBloodEntity.setNome(bank.getNome());
         bankOfBloodEntity.setHorariodeatendimento(bank.getHorariodeatendimento());
         bankOfBloodEntity.setTelefone(bank.getTelefone());
+        var geoPoints = geoLocationService.getGeographicCoordinates(bankOfBloodAddressDTO.getLogradouro(),bankOfBloodAddressDTO.getBairro(),bankOfBloodAddressDTO.getCidade());
+        bankOfBloodEntity.setLatitude(Double.parseDouble(geoPoints.getLatitude()));
+        bankOfBloodEntity.setLongitude(Double.parseDouble(geoPoints.getLongitude()));
 
         bankOfBloodEntity = bankOfBloodRepository.save(bankOfBloodEntity);
 
-        return  bankOfBloodDTO.converter(bankOfBloodEntity);
+        return  BankOfBloodDTO.converter(bankOfBloodEntity);
 
     }
 

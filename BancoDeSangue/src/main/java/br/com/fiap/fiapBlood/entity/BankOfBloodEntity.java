@@ -29,6 +29,8 @@ public class BankOfBloodEntity {
     private String complemento;
     private String uf;
     private String cidade;
+    private Double longitude;
+    private Double latitude;
 
     public BankOfBloodEntity(BankOfBloodCreateOrUpdateDTO bankOfBloodCreateOrUpdateDTO){
 
