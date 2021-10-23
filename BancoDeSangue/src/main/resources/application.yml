@@ -1,7 +1,14 @@
 server:
-  port: 2222
+  port: ${port:8080}
   error:
     include-message: always
+client:
+  nominatim:
+    baseUrl: https://nominatim.openstreetmap.org/search
+    formatData: format=json
+    limit: 1
+  viacep:
+    baseUrl: https://viacep.com.br/ws/%s/json/
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
