@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BankOfBloodDTO {
 
+    private Long id;
     private String nome;
     private String horariodeatendimento;
     private String telefone;
@@ -25,6 +26,7 @@ public class BankOfBloodDTO {
     public static BankOfBloodDTO converter(BankOfBloodEntity bankOfBloodEntity) {
         var bankOfBloodDTO = new BankOfBloodDTO();
 
+        bankOfBloodDTO.setId(bankOfBloodEntity.getId());
         bankOfBloodDTO.setNome(bankOfBloodEntity.getNome());
         bankOfBloodDTO.setHorariodeatendimento(bankOfBloodEntity.getHorariodeatendimento());
         bankOfBloodDTO.setTelefone(bankOfBloodEntity.getTelefone());
