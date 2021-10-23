@@ -1,6 +1,6 @@
 package br.com.fiap.fiapBlood.service;
 
-import br.com.fiap.fiapBlood.dto.BankOfBloodAddressDTO;
+import br.com.fiap.fiapBlood.dto.bankOfBlood.BankOfBloodAddressDTO;
 import br.com.fiap.fiapBlood.dto.bankOfBlood.BankOfBloodCreateOrUpdateDTO;
 import br.com.fiap.fiapBlood.dto.bankOfBlood.BankOfBloodDTO;
 

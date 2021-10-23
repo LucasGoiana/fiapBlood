@@ -1,6 +1,7 @@
 server:
   port: ${port:8080}
-
+  error:
+    include-message: always
 client:
   nominatim:
     baseUrl: https://nominatim.openstreetmap.org/search
@@ -8,12 +9,11 @@ client:
     limit: 1
   viacep:
     baseUrl: https://viacep.com.br/ws/%s/json/
-
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bancoDeSangua?createDatabaseIfNotExist=true
-    username: lucas
+    url: jdbc:mysql://localhost:3306/bancoDeSangue?createDatabaseIfNotExist=true
+    username: root
     password: 123456
   jpa:
     hibernate.ddl-auto: update

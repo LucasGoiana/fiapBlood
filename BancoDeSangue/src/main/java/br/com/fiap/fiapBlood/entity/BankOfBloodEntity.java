@@ -1,6 +1,6 @@
 package br.com.fiap.fiapBlood.entity;
 
-import br.com.fiap.fiapBlood.dto.BankOfBloodAddressDTO;
+import br.com.fiap.fiapBlood.dto.bankOfBlood.BankOfBloodAddressDTO;
 import br.com.fiap.fiapBlood.dto.bankOfBlood.BankOfBloodCreateOrUpdateDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name="tb_banco_de_sangue")
-
 public class BankOfBloodEntity {
 
     @Id
