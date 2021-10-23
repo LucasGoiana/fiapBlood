@@ -23,6 +23,13 @@ public class BankOfBloodController {
         return bankOfBloodService.getAllBankOfBlood();
     }
 
+    @GetMapping("/search")
+    public List<BankOfBloodDTO> searchBankOfBlood(
+            @RequestParam("cep") String cep
+    ) {
+        return bankOfBloodService.searchBlankOfBlood(cep);
+    }
+
     @GetMapping("/{id}")
     public BankOfBloodDTO getById(@PathVariable Long id){
         //return bankOfBloodService.getById(id);
