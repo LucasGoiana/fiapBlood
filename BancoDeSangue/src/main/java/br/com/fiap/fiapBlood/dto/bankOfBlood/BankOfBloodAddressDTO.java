@@ -1,4 +1,4 @@
-package br.com.fiap.fiapBlood.dto;
+package br.com.fiap.fiapBlood.dto.bankOfBlood;
 
 import lombok.Getter;
 import lombok.Setter;

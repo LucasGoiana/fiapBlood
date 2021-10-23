@@ -1,10 +1,12 @@
 server:
-  port: 8080
+  port: 2222
+  error:
+    include-message: always
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bancoDeSangua?createDatabaseIfNotExist=true
-    username: lucas
+    url: jdbc:mysql://localhost:3306/bancoDeSangue?createDatabaseIfNotExist=true
+    username: root
     password: 123456
   jpa:
     hibernate.ddl-auto: update
