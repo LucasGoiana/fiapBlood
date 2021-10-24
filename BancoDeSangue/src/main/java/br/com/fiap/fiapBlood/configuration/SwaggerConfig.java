@@ -33,7 +33,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .apis(RequestHandlerSelectors.basePackage("br.com.fiap.fiapBlood"))
                 .build()
                 .securitySchemes(Arrays.asList(new ApiKey("Bearer Token", HttpHeaders.AUTHORIZATION, In.HEADER.name())))
-                .securityContexts(Arrays.asList(securityContext()))
                 .apiInfo(metaData());
 
     }
@@ -55,14 +54,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
-
-
-    private SecurityContext securityContext() {
-        return SecurityContext.builder()
-                .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.ant("/banks/"))
-                .build();
     }
 
     private List<SecurityReference> defaultAuth() {

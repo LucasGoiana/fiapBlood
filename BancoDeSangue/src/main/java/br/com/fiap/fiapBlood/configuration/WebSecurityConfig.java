@@ -76,9 +76,9 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                     .and()
 
                     .authorizeRequests()
-                    .antMatchers("/users/**").permitAll()
+                    .antMatchers("/v1/users/**").permitAll()
                     .antMatchers("/swagger-ui**").permitAll()
-                    .antMatchers(HttpMethod.GET,"/banks/search**").permitAll()
+                    .antMatchers(HttpMethod.GET,"/v1/banks/search**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
