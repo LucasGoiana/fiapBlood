@@ -23,6 +23,12 @@ public class BankOfBloodController {
         return bankOfBloodService.getAllBankOfBlood();
     }
 
+    @PostMapping("/")
+    public BankOfBloodDTO createBankOfBlood(@RequestBody BankOfBloodCreateOrUpdateDTO bankOfBloodCreateOrUpdateDTO){
+        return bankOfBloodService.createBankOfBlood(bankOfBloodCreateOrUpdateDTO);
+
+    }
+
     @GetMapping("/search")
     public List<BankOfBloodDTO> searchBankOfBlood(
             @RequestParam("cep") String cep
@@ -36,13 +42,7 @@ public class BankOfBloodController {
         return null;
     }
 
-    @PostMapping("/")
-    public BankOfBloodDTO createBankOfBlood(@RequestBody BankOfBloodCreateOrUpdateDTO bankOfBloodCreateOrUpdateDTO){
-        return bankOfBloodService.createBankOfBlood(bankOfBloodCreateOrUpdateDTO);
-
-    }
-
-    @PutMapping("/{id}")
+      @PutMapping("/{id}")
     public BankOfBloodDTO updateBankOfBlood(@PathVariable Long id,@RequestBody BankOfBloodCreateOrUpdateDTO bankOfBloodCreateOrUpdateDTO){
         return bankOfBloodService.updateBankOfBlood(id, bankOfBloodCreateOrUpdateDTO);
 
