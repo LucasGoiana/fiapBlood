@@ -1,5 +1,5 @@
 server:
-  port: ${port:8080}
+  port: ${PORT:8080}
   error:
     include-message: always
 client:
@@ -15,9 +15,9 @@ security:
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bancoDeSangue?createDatabaseIfNotExist=true
-    username: root
-    password: 123456
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/bancoDeSangue?createDatabaseIfNotExist=true}
+    username: ${JDBC_DATABASE_USERNAME:root}
+    password: ${JDBC_DATABASE_PASSWORD:123456}
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
