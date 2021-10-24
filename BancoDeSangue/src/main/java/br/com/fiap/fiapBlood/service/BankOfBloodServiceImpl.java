@@ -43,6 +43,7 @@ public class BankOfBloodServiceImpl implements BankOfBloodService {
         var lista = blankBloodCity.stream()
                 .filter(blankBlood -> geoLocationService.calculateDistance(Double.parseDouble(geographicPointUser.getLatitude()),Double.parseDouble(geographicPointUser.getLongitude()),blankBlood.getLatitude(),blankBlood.getLongitude()) < 100)
                 .sorted((o1,o2) -> geoLocationService.calculateDistance(Double.parseDouble(geographicPointUser.getLatitude()),Double.parseDouble(geographicPointUser.getLongitude()),o2.getLatitude(),o1.getLongitude()).compareTo(geoLocationService.calculateDistance(Double.parseDouble(geographicPointUser.getLatitude()),Double.parseDouble(geographicPointUser.getLongitude()),o2.getLatitude(),o2.getLongitude())) )
+                .limit(5)
                 .map(BankOfBloodDTO::converter).collect(Collectors.toList());
         return lista;
 
