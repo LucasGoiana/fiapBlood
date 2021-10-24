@@ -17,7 +17,7 @@
 - Mysql
 - Spring Framework
 - Executar o projeto fiapBlood ao menos 1 vez, para que seja criado a base de dados
-- Executar a massa de dados ao menos 1 vez para fazer as inserções iniciais necessárias essa massa de dados está localizada em `./Massadedados/`
+- Executar a massa de dados ao menos 1 vez para fazer as inserções iniciais necessárias. Essa massa de dados está localizada em `./Massadedados/`
 
  <p> Clone ou Extraia o projeto em um diretório de sua preferência:</p>
 
