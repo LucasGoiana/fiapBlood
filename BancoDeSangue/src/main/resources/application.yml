@@ -9,6 +9,9 @@ client:
     limit: 1
   viacep:
     baseUrl: https://viacep.com.br/ws/%s/json/
+security:
+  secret: f14pS3cr37
+  expireInSeconds: 300
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
