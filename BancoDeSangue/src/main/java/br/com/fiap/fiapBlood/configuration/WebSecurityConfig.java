@@ -85,6 +85,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                     .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                     .and()
                     .csrf().disable()
+                    .cors()
+                    .and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                     .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)

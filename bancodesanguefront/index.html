@@ -60,7 +60,7 @@
 
 			$.ajax({
 				method: "GET",
-				url: "http://localhost:8080/bank/search?cep=" + cep,
+				url: "https://fiap-blood.herokuapp.com/v1/banks/search?cep=" + cep,
 				contentType: 'application/json',
 				crossDomain: false,
 				success: function (data) {
