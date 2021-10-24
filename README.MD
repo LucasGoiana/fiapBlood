@@ -25,10 +25,10 @@ Para esse projeto foi criado uma api com base nas opções de escolhas que nos f
 
 O Software foi dividido em duas camadas:
 
-- **FiapBlood** - Contempla a API de Java(Spring Framework) com Mysql, Cadastro de Banco de Sangue, Controle de Estoque e Tipo de Sangue, além disso, esse projeto contém integrações com o <a href="https://viacep.com.br/" target="_blank">VIACep</a> e <a href="https://nominatim.openstreetmap.org/ui/search.html" target="_blank">Nominatim</a>.
+- **FiapBlood** - Contempla a API de Java(Spring Framework) com Mysql, Cadastro de Banco de Sangue, Controle de Estoque e Tipo de Sangue, além disso, esse projeto contém integrações com o <a href="https://viacep.com.br/" target="_blank">VIACep</a> e <a href="https://nominatim.openstreetmap.org/ui/search.html" target="_blank">Nominatim</a>.<br>
   <b>Link Api: </b> <a href="https://fiap-blood.herokuapp.com/actuator/health" target="_blank">Clique aqui </a>
 
-- **bancodesanguefront** - Contempla o Front-End(HTML 5, CSS 3, JS, Jquery, Ajax) que informando somente o CEP busca a lista de Hemocentros/Bancos de Sangue cadastrados mais próximos.
+- **bancodesanguefront** - Contempla o Front-End(HTML 5, CSS 3, JS, Jquery, Ajax) que informando somente o CEP busca a lista de Hemocentros/Bancos de Sangue cadastrados mais próximos.<br>
 <b>Link Front: </b> <a href="https://lucasgoiana.com/bancodesanguefront/" target="_blank">Clique aqui </a>
 
 Cada diretório mencionado acima possui uma documentação no arquivo readme.md, essa documentação possui o passo a passo da execução do aplicativo e a documentação da api.
