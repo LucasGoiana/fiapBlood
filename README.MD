@@ -1,6 +1,6 @@
 
 <h1 align="center"> Fiap Hemocentro </h1>
-<p align="center"> Api criada para o módulo "WEBSERVICES & RESTFUL TECHNOLOGIES" - FIAP - Grupo 1 <br></p>
+<p align="center"> Projeto criado para o módulo "WEBSERVICES & RESTFUL TECHNOLOGIES" - FIAP - Grupo 1 <br></p>
 
 ###  Integrantes do Grupo<Br>
 341417 - LUCAS GOIANA MALICIA<br>
@@ -17,22 +17,22 @@
 - Spring Framework
 
 # Tema
-Todos os dias acontecem centenas de acidentes, cirurgias e queimaduras violentas que exigem transfusão, assim como os portadores de hemofilia, leucemia e anemias, para ajudar as pessoas nessas condições a encontrar os Hemocentros mais próximos, nós desenvolvemos o Sistema de Banco de Sangue - FiapBlood, o software mais completo para o gerenciamento de hemocentros.
+Todos os dias acontecem centenas de acidentes, cirurgias e queimaduras violentas que exigem transfusão, assim como os portadores de hemofilia, leucemia e anemias, para ajudar as pessoas nessas condições a encontrar os Hemocentros mais próximos, nós desenvolvemos o Sistema de Banco de Sangue - FiapBlood, o software mais completo para o gerenciamento e Busca de Hemocentros.
 
-# Projeto
+# As Tecnologias Escolhidas
 
-Para esse projeto foi criado uma api com base nas opções de escolha que nos foi dada, por isso, optamos por fazer o nosso software com Spring Framework e Mysql. 
+Para esse projeto foi criado uma api com base nas opções de escolhas que nos foram dadas, por isso, optamos por fazer o nosso software com Spring Framework e Mysql. 
 
 O Software foi dividido em duas camadas:
 
-- **FiapBlood** - Contempla a API de Java com Mysql, Cadastro de Banco de Sangue, Controle de Estoque e tipo de Sangue.
-- **bancodesanguefront** - Contempla o front end que informando somente o CEP busca a lista de Hemocentros/Bancos de Sangue mais próximos.
+- **FiapBlood** - Contempla a API de Java(Spring Framework) com Mysql, Cadastro de Banco de Sangue, Controle de Estoque e Tipo de Sangue, além disso, esse projeto contém integrações com o <a href="https://viacep.com.br/">VIACep</a> e <a href="https://nominatim.openstreetmap.org/ui/search.html">Nominatim</a>.
+- **bancodesanguefront** - Contempla o Front-End(HTML 5, CSS 5, JS, Jquery, Ajax) que informando somente o CEP busca a lista de Hemocentros/Bancos de Sangue cadastrados mais próximos.
 
 Cada diretório mencionado acima possui uma documentação no arquivo readme.md, essa documentação possui o passo a passo da execução do aplicativo e a documentação da api.
 
-### Escolha Técnica
+> <b>Obs.:</b> O Nominatim não contempla todos os ceps. Isso pode ocasionar falhas nas buscas durante o testes, para resolver isso, por favor, utilize mais de um cep em seus testes.
 
-Utilizamos o SpringFramework pelo ganho de produtividade e pela otimização de tempo.
+Utilizamos o Spring Framework pelo ganho de produtividade e pela otimização de tempo.
 Vale destacar o Spring Data JPA, que nos permite utilizar todas as annotations, facilitando a conexão da aplicação java com qualquer banco de dados sem a necessidade de criar os
 métodos de CRUD.
 
