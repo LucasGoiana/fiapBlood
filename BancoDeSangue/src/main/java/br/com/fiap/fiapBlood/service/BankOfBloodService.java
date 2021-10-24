@@ -12,6 +12,8 @@ public interface BankOfBloodService {
 
     List<BankOfBloodDTO> searchBlankOfBlood(String cep);
 
+    BankOfBloodDTO getById(Long id);
+
     BankOfBloodDTO createBankOfBlood(BankOfBloodCreateOrUpdateDTO bankOfBloodCreateOrUpdateDTO);
 
     BankOfBloodDTO updateBankOfBlood(Long id, BankOfBloodCreateOrUpdateDTO bankOfBloodCreateOrUpdateDTO);

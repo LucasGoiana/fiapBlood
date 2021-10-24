@@ -1,6 +1,7 @@
 package br.com.fiap.fiapBlood.dto.inventory;
 
 import br.com.fiap.fiapBlood.entity.InventoryEntity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,6 @@ public class InventoryUpdateDTO {
         return inventoryUpdateDTO;
     }
 
-
+    @ApiModelProperty(example = "20")
     private Double quantity;
 }

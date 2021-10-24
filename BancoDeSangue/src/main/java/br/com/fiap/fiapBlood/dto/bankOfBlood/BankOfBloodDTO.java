@@ -1,6 +1,7 @@
 package br.com.fiap.fiapBlood.dto.bankOfBlood;
 
 import br.com.fiap.fiapBlood.entity.BankOfBloodEntity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,18 +11,38 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BankOfBloodDTO {
 
+    @ApiModelProperty(example = "1")
     private Long id;
-    private String nome;
-    private String horariodeatendimento;
-    private String telefone;
-    private String cep;
-    private String logradouro;
-    private Integer numero;
-    private String bairro;
-    private String complemento;
-    private String uf;
-    private String cidade;
 
+    @ApiModelProperty(example = "Banco de Sangue 1")
+    private String nome;
+
+    @ApiModelProperty(example = "9:hrs ás 18:00 hrs")
+    private String horariodeatendimento;
+
+    @ApiModelProperty(example = "(11) 99733-8125")
+    private String telefone;
+
+    @ApiModelProperty(example = "09855-370")
+    private String cep;
+
+    @ApiModelProperty(example = "Rua Serra dos Pinhais")
+    private String logradouro;
+
+    @ApiModelProperty(example = "222")
+    private Integer numero;
+
+    @ApiModelProperty(example = "Cooperativa")
+    private String bairro;
+
+    @ApiModelProperty(example = "")
+    private String complemento;
+
+    @ApiModelProperty(example = "SP")
+    private String uf;
+
+    @ApiModelProperty(example = "São Bernardo do Campo")
+    private String cidade;
 
     public static BankOfBloodDTO converter(BankOfBloodEntity bankOfBloodEntity) {
         var bankOfBloodDTO = new BankOfBloodDTO();

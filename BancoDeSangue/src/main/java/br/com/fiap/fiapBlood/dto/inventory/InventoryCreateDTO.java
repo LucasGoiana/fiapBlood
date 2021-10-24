@@ -3,6 +3,7 @@ package br.com.fiap.fiapBlood.dto.inventory;
 import br.com.fiap.fiapBlood.entity.BankOfBloodEntity;
 import br.com.fiap.fiapBlood.entity.InventoryEntity;
 import br.com.fiap.fiapBlood.entity.TypeOfBloodEntity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,19 +16,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InventoryCreateDTO {
-    private Long idInventory;
+
+    @ApiModelProperty(example = "16")
     private Long bankofblood;
+
+    @ApiModelProperty(example = "1")
     private Long typeofblood;
-    private BankOfBloodEntity bankOfBloodEntity;
-    private TypeOfBloodEntity typeOfBloodEntity;
+
+    @ApiModelProperty(example = "20")
     private Double quantity;
+
+    @ApiModelProperty(example = "100")
     private Double quantityMax;
 
 
     public static InventoryDTO converter(InventoryEntity inventoryEntity) {
         var inventoryDTO = new InventoryDTO();
 
-        inventoryDTO.setIdInventory(inventoryEntity.getId());
         inventoryDTO.setBankOfBloodEntity(inventoryEntity.getBankOfBloodEntity());
         inventoryDTO.setTypeOfBloodEntity(inventoryEntity.getTypeOfBloodEntity());
         inventoryDTO.setQuantity(inventoryEntity.getQuantity());

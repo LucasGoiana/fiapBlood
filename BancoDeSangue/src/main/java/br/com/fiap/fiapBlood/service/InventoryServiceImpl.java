@@ -55,6 +55,9 @@ public class InventoryServiceImpl implements InventoryService {
         Double quantityOld = inventoryEntity.getQuantity();
         Double quantityNew = inventoryUpdateDTO.getQuantity() + quantityOld;
 
+        if (quantityNew < 0 ){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Quantidade em estoque não pode ser negativa!");
+        }
         if (quantityNew > quantityMax  ) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Quantidade inserida ultrapassa a capacidade do Estoque!");
         }else {

@@ -45,8 +45,7 @@ public class BankOfBloodController {
     @ApiOperation(value = "Recupera um banco de sangue", notes = "Este endpoint recupera um banco de sangue conforme ID informado",authorizations = { @Authorization(value="Bearer Token") })
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public BankOfBloodDTO getById(@PathVariable Long id){
-        //return bankOfBloodService.getById(id);
-        return null;
+        return bankOfBloodService.getById(id);
     }
 
     @ApiOperation(value = "Atualiza banco de sangue", notes = "Este endpoint atualiza um banco de sangue",authorizations = { @Authorization(value="Bearer Token") })

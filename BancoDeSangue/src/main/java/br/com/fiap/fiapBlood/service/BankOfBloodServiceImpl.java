@@ -5,6 +5,7 @@ import br.com.fiap.fiapBlood.dto.bankOfBlood.BankOfBloodCreateOrUpdateDTO;
 import br.com.fiap.fiapBlood.dto.bankOfBlood.BankOfBloodDTO;
 import br.com.fiap.fiapBlood.entity.BankOfBloodEntity;
 import br.com.fiap.fiapBlood.repository.BankOfBloodRepository;
+import br.com.fiap.fiapBlood.repository.InventoryRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,11 +19,13 @@ public class BankOfBloodServiceImpl implements BankOfBloodService {
     private final BankOfBloodRepository bankOfBloodRepository;
     private final GeoLocationService geoLocationService;
     private final ViaCepService viaCepService;
+    private final InventoryRepository inventoryRepository;
 
-    public BankOfBloodServiceImpl(BankOfBloodRepository bankOfBloodRepository, GeoLocationService geoLocationService, ViaCepService viaCepService) {
+    public BankOfBloodServiceImpl(BankOfBloodRepository bankOfBloodRepository, GeoLocationService geoLocationService, ViaCepService viaCepService, InventoryRepository inventoryRepository) {
         this.bankOfBloodRepository = bankOfBloodRepository;
         this.geoLocationService = geoLocationService;
         this.viaCepService = viaCepService;
+        this.inventoryRepository = inventoryRepository;
     }
 
     @Override
@@ -43,6 +46,12 @@ public class BankOfBloodServiceImpl implements BankOfBloodService {
                 .map(BankOfBloodDTO::converter).collect(Collectors.toList());
         return lista;
 
+    }
+
+    @Override
+    public BankOfBloodDTO getById(Long id) {
+        var bankOfBloodEntity = bankOfBloodRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Banco de Sangue não encontrado"));
+        return BankOfBloodDTO.converter(bankOfBloodEntity);
     }
 
     @Override
@@ -93,7 +102,9 @@ public class BankOfBloodServiceImpl implements BankOfBloodService {
 
     @Override
     public void deleteBank(Long id) {
-        bankOfBloodRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Banco de Sangue não encontrado"));
+        var bank = bankOfBloodRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Banco de Sangue não encontrado"));
+        inventoryRepository.deleteAllByBankOfBloodEntityId(1L);
+
         bankOfBloodRepository.deleteById(id);
 
     }
