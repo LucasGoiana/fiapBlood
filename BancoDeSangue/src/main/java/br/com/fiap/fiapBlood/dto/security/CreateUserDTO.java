@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class CreateUserDTO {
 
-    @ApiModelProperty(example = "eduardo.galego@email.com.br")
+    @ApiModelProperty(example = "eduardo@email.com.br")
     private String username;
 
     @ApiModelProperty(example = "123456")
