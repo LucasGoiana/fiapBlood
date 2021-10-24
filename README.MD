@@ -16,7 +16,7 @@
 - Mysql
 - Spring Framework
 
-#Link Git
+# Link GitHub
 
 <a href="https://github.com/LucasGoiana/fiapBlood">Cliquei aqui</a>
 
